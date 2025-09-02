@@ -1,6 +1,6 @@
-# WebFlow
+# StructFlow
 
-A modern, type-safe Python library for generating HTML documents programmatically. WebFlow provides a clean, Pythonic API for creating HTML with full type hints and comprehensive tag support.
+A modern, type-safe Python library for generating HTML documents programmatically. StructFlow provides a clean, Pythonic API for creating HTML with full type hints and comprehensive tag support.
 
 ## Features
 
@@ -41,7 +41,7 @@ doc.add_head(
 
 doc.add(
     div(
-        h1("Welcome to WebFlow", class_="hero-title"),
+        h1("Welcome to StructFlow", class_="hero-title"),
         p("A modern HTML generation library for Python."),
         a("Learn more", href="https://example.com", class_="btn btn-primary")
     )
@@ -314,7 +314,7 @@ The library organizes tags into logical modules:
 
 ## Type Safety
 
-WebFlow provides comprehensive type hints:
+StructFlow provides comprehensive type hints:
 
 ```python
 from typing import Optional

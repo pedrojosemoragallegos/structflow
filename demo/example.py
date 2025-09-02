@@ -53,7 +53,7 @@ def build_html() -> str:
         meta(charset="utf-8"),
         meta(name="viewport", content="width=device-width, initial-scale=1"),
         meta(name="theme-color", content="#111827"),
-        title("Webflow • Complete Example Website"),
+        title("Structflow • Complete Example Website"),
         base(href="https://example.com/", target="_self"),
         link(rel="icon", href="/favicon.ico"),
         link(

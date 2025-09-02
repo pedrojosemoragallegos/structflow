@@ -17,6 +17,9 @@ class body(Container): ...
 class head(Container): ...
 
 
+# TODO:
+# - make the head arguemnts pass to the constructor
+# - remove the "add_head"
 class Document:
     def __init__(
         self,
