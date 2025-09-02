@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "structflow"
-version = "1.0.1"
+version = "1.1.1"
 description = "A Python library for programmatic HTML generation with type safety and a clean API"
 authors = ["Pedro José Mora Gallegos <pedrojosemoragallegos@outlook.de>"]
 readme = "README.md"

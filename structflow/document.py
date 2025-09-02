@@ -2,27 +2,84 @@ from __future__ import annotations
 
 import typing
 
-from .tags.base import Container
+from structflow.tags import (
+    base,
+    body,
+    head,
+    link,
+    meta,
+    noscript,
+    script,
+    style,
+    template,
+    title,
+)
+from structflow.tags.base import AttributeValue, Container
 
 if typing.TYPE_CHECKING:
-    from .tags.base import Tag
+    from structflow.tags.base import Tag
 
 
-class html(Container): ...
+# TODO add support for passing either string, path or url to for script/css etc.
+class html(Container):
+    def __init__(
+        self,
+        *children: typing.Union[head, body, Tag, str],
+        lang: typing.Optional[str] = None,
+        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
+        xmlns: typing.Optional[str] = None,
+        manifest: typing.Optional[str] = None,
+        id: typing.Optional[str] = None,
+        class_: typing.Optional[typing.Union[str, list[str]]] = None,
+        style: typing.Optional[str] = None,
+        title: typing.Optional[str] = None,
+        tabindex: typing.Optional[int] = None,
+        hidden: typing.Optional[bool] = None,
+        draggable: typing.Optional[bool] = None,
+        contenteditable: typing.Optional[bool] = None,
+        spellcheck: typing.Optional[bool] = None,
+        translate: typing.Optional[bool] = None,
+        accesskey: typing.Optional[str] = None,
+        **kwargs: AttributeValue,
+    ):
+        super().__init__(
+            *children,
+            id=id,
+            class_=class_,
+            style=style,
+            title=title,
+            lang=lang,
+            dir=dir,
+            tabindex=tabindex,
+            hidden=hidden,
+            draggable=draggable,
+            contenteditable=contenteditable,
+            spellcheck=spellcheck,
+            translate=translate,
+            accesskey=accesskey,
+            **kwargs,
+        )
+
+        if xmlns is not None:
+            self._attributes["xmlns"] = xmlns
+        if manifest is not None:
+            self._attributes["manifest"] = manifest
 
 
-class body(Container): ...
-
-
-class head(Container): ...
-
-
-# TODO:
-# - make the head arguemnts pass to the constructor
-# - remove the "add_head"
 class Document:
     def __init__(
         self,
+        *head_elements: typing.Union[
+            title,
+            meta,
+            link,
+            script,
+            style,
+            base,
+            noscript,
+            template,
+            str,
+        ],
         doctype: str = "<!DOCTYPE html>",
         html_lang: typing.Optional[str] = None,
         html_dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
@@ -34,15 +91,23 @@ class Document:
         self._xhtml: bool = xhtml
         self._html_lang: typing.Optional[str] = html_lang
         self._html_dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = html_dir
-        self._pending_head: list[typing.Union[Tag, str]] = []
+        self._head_elements: list[
+            typing.Union[
+                title,
+                meta,
+                link,
+                script,
+                style,
+                base,
+                noscript,
+                template,
+                str,
+            ]
+        ] = list(head_elements)
         self._pending_body: list[typing.Union[Tag, str]] = []
         self._head: typing.Optional[head] = None
         self._body: typing.Optional[body] = None
         self._root: typing.Optional[html] = None
-        self._dirty = True
-
-    def add_head(self, *tags: typing.Union[Tag, str]):
-        self._pending_head.extend(tags)
         self._dirty = True
 
     def add(self, *tags: typing.Union[Tag, str]):
@@ -66,16 +131,14 @@ class Document:
             if use_pretty:
                 sb.append("\n")
 
-        self._root._render(
-            sb, indent_level, use_pretty, use_xhtml
-        )  # TODO add a public function in the Tag class
+        self._root._render(sb, indent_level, use_pretty, use_xhtml)
         return "".join(sb)
 
     def __repr__(self) -> str:
         return (
             f"document(doctype={repr(self._doctype)}, "
             f"pretty={self._pretty}, xhtml={self._xhtml}, "
-            f"queued_head={len(self._pending_head)}, "
+            f"head_elements={len(self._head_elements)}, "
             f"queued_body={len(self._pending_body)}, dirty={self._dirty})"
         )
 
@@ -83,7 +146,7 @@ class Document:
         if not self._dirty and self._root is not None:
             return
 
-        self._head: head = head(*self._pending_head)
+        self._head: head = head(*self._head_elements)
         self._body: body = body(*self._pending_body)
         self._root: html = html(
             self._head, self._body, lang=self._html_lang, dir=self._html_dir

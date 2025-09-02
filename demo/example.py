@@ -48,8 +48,7 @@ from structflow.tags import (
 
 
 def build_html() -> str:
-    doc: Document = Document(html_lang="en")
-    doc.add_head(
+    doc: Document = Document(
         meta(charset="utf-8"),
         meta(name="viewport", content="width=device-width, initial-scale=1"),
         meta(name="theme-color", content="#111827"),
@@ -70,7 +69,9 @@ def build_html() -> str:
         noscript(
             "<strong>JavaScript is disabled.</strong> Some features may not work."
         ),
+        html_lang="en",
     )
+
     doc.add(
         header(
             div(
@@ -122,7 +123,7 @@ def build_html() -> str:
                 section(
                     h2("Quote & Code"),
                     blockquote(
-                        "“Simplicity is prerequisite for reliability.” — Edsger W. Dijkstra"
+                        '"Simplicity is prerequisite for reliability." — Edsger W. Dijkstra'
                     ),
                     pre(code('print("Hello, structflow!")')),
                     class_="card",

@@ -51,18 +51,21 @@ from .grouping import (
     search,
     ul,
 )
-from .links import (
-    a,  # canonical <a>
-    area as area_link,  # avoid clobbering embedded.area
-    link,  # canonical <link>
-)
-from .metadata import (
+from .head import (
     base,
     head,
     link,
     meta,
+    noscript,
+    script,
     style,
+    template,
     title,
+)
+from .links import (
+    a,  # canonical <a>
+    area as area_link,  # avoid clobbering embedded.area
+    link,  # canonical <link>
 )
 from .scripting import (
     canvas as canvas_script,  # avoid clobbering embedded.canvas

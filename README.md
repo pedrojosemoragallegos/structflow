@@ -27,18 +27,17 @@ poetry add structflow
 
 ```python
 from structflow import Document
-from structflow.tags import div, h1, p, a
+from structflow.tags import div, h1, p, a, title, meta
 
-# Create a document
-doc = Document()
-
-# Add content to head and body
-doc.add_head(
+# Create a document with head elements
+doc = Document(
     title("My Page Title"),
     meta(charset="utf-8"),
-    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(name="viewport", content="width=device-width, initial-scale=1"),
+    html_lang="en"
 )
 
+# Add content to body
 doc.add(
     div(
         h1("Welcome to StructFlow", class_="hero-title"),
@@ -56,12 +55,19 @@ print(html_output)
 
 ### Document Structure
 
-The `Document` class serves as the root container for your HTML document:
+The `Document` class serves as the root container for your HTML document. Head elements are passed directly to the constructor:
 
 ```python
 from structflow import Document
+from structflow.tags import title, meta, link
 
 doc = Document(
+    # Head elements passed directly
+    title("Page Title"),
+    meta(charset="utf-8"),
+    meta(name="viewport", content="width=device-width, initial-scale=1"),
+    link(rel="stylesheet", href="styles.css"),
+    # Document options
     doctype="<!DOCTYPE html>",
     html_lang="en",
     html_dir="ltr",
@@ -72,13 +78,13 @@ doc = Document(
 
 ### Adding Content
 
-Content is added to the document using `add_head()` and `add()` methods:
+Head elements are specified in the document constructor, while body content is added using the `add()` method:
 
 ```python
 from structflow.tags import title, meta, link, div, h1
 
-# Add metadata
-doc.add_head(
+# Create document with head elements
+doc = Document(
     title("Page Title"),
     meta(charset="utf-8"),
     link(rel="stylesheet", href="styles.css")
@@ -117,6 +123,9 @@ from structflow.tags import (
     # Tables
     table, thead, tbody, tfoot, tr, th, td,
     
+    # Head elements
+    title, meta, link, script, style, base,
+    
     # And many more...
 )
 ```
@@ -148,6 +157,50 @@ div(class_=["btn", "btn-primary", "btn-large"])
 ```
 
 ## Advanced Usage
+
+### Head Elements
+
+StructFlow provides comprehensive support for all head elements with proper typing:
+
+```python
+from structflow.tags import title, meta, link, script, style
+
+doc = Document(
+    # Page metadata
+    title("My Application"),
+    meta(charset="utf-8"),
+    meta(name="description", content="A great web application"),
+    meta(name="keywords", content="python, html, web"),
+    meta(name="author", content="Your Name"),
+    
+    # Viewport for responsive design
+    meta(name="viewport", content="width=device-width, initial-scale=1"),
+    
+    # Open Graph metadata
+    meta(property="og:title", content="My Application"),
+    meta(property="og:description", content="A great web application"),
+    meta(property="og:image", content="https://example.com/image.jpg"),
+    
+    # External resources
+    link(rel="stylesheet", href="styles.css"),
+    link(rel="icon", href="favicon.ico", type="image/x-icon"),
+    link(rel="preconnect", href="https://fonts.googleapis.com"),
+    
+    # Scripts
+    script(src="https://cdn.example.com/library.js", defer=True),
+    
+    # Inline styles
+    style("""
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+        }
+    """),
+    
+    html_lang="en"
+)
+```
 
 ### Custom Attributes
 
@@ -297,16 +350,134 @@ Specify a custom doctype:
 doc = Document(doctype="<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"")
 ```
 
+## Complete Example
+
+Here's a comprehensive example showing a complete HTML document:
+
+```python
+from structflow import Document
+from structflow.tags import *
+
+# Create document with comprehensive head
+doc = Document(
+    # Basic metadata
+    title("StructFlow Demo - Modern HTML Generation"),
+    meta(charset="utf-8"),
+    meta(name="viewport", content="width=device-width, initial-scale=1"),
+    meta(name="description", content="Demo of StructFlow HTML generation"),
+    
+    # External resources
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"),
+    link(rel="icon", href="favicon.ico"),
+    
+    # Custom styles
+    style("""
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .hero h1 { color: white; }
+    """),
+    
+    html_lang="en"
+)
+
+# Build the page content
+doc.add(
+    header(
+        nav(
+            div(
+                a("StructFlow", href="#", class_="navbar-brand"),
+                ul(
+                    li(a("Home", href="#", class_="nav-link"), class_="nav-item"),
+                    li(a("Docs", href="#", class_="nav-link"), class_="nav-item"),
+                    li(a("GitHub", href="#", class_="nav-link"), class_="nav-item"),
+                    class_="navbar-nav ms-auto"
+                ),
+                class_="container-fluid"
+            ),
+            class_="navbar navbar-expand-lg navbar-dark bg-dark"
+        )
+    ),
+    
+    main(
+        section(
+            div(
+                div(
+                    div(
+                        h1("Modern HTML Generation", class_="display-4"),
+                        p("Build HTML documents with Python using a clean, type-safe API.", 
+                          class_="lead"),
+                        a("Get Started", href="#features", class_="btn btn-light btn-lg"),
+                        class_="col-md-8"
+                    ),
+                    class_="row justify-content-center text-center"
+                ),
+                class_="container py-5"
+            ),
+            class_="hero py-5"
+        ),
+        
+        section(
+            div(
+                h2("Features", class_="text-center mb-5"),
+                div(
+                    div(
+                        div(
+                            h3("Type Safe"),
+                            p("Full type hints with mypy support for error-free development."),
+                            class_="card-body"
+                        ),
+                        class_="card h-100"
+                    ),
+                    div(
+                        div(
+                            h3("Modern API"),
+                            p("Clean, Pythonic interface that feels natural to use."),
+                            class_="card-body"
+                        ),
+                        class_="card h-100"
+                    ),
+                    div(
+                        div(
+                            h3("Complete"),
+                            p("All HTML5 elements and attributes with proper validation."),
+                            class_="card-body"
+                        ),
+                        class_="card h-100"
+                    ),
+                    class_="row g-4"
+                ),
+                class_="container py-5"
+            ),
+            id="features"
+        )
+    ),
+    
+    footer(
+        div(
+            p("© 2024 StructFlow. Built with ❤️ and Python.", 
+              class_="text-center text-muted"),
+            class_="container py-4"
+        ),
+        class_="bg-light mt-5"
+    ),
+    
+    # Bootstrap JavaScript
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js")
+)
+
+# Render the complete document
+html_output = doc.render()
+```
+
 ## Tag Categories
 
 The library organizes tags into logical modules:
 
+- **`head`**: `title`, `meta`, `link`, `script`, `style`, `base`, `noscript`, `template`
 - **`edits`**: `ins`, `del_`
 - **`embedded`**: `img`, `video`, `audio`, `embed`, `iframe`, `object`, `canvas`, `svg`
 - **`forms`**: `form`, `input`, `textarea`, `select`, `button`, `fieldset`, etc.
 - **`grouping`**: `div`, `p`, `hr`, `ul`, `ol`, `li`, `dl`, `dt`, `dd`, etc.
-- **`links`**: `a`, `link`, `area`
-- **`metadata`**: `title`, `meta`, `base`, `style`, `head`
+- **`links`**: `a`, `area`
 - **`scripting`**: `script`, `noscript`, `template`
 - **`sections`**: `section`, `article`, `nav`, `aside`, `header`, `footer`, `main`
 - **`table`**: `table`, `thead`, `tbody`, `tr`, `th`, `td`, etc.
@@ -318,7 +489,7 @@ StructFlow provides comprehensive type hints:
 
 ```python
 from typing import Optional
-from structflow.tags import div, span
+from structflow.tags import div, span, meta, link
 
 # Type-safe element creation
 container: div = div(
@@ -326,37 +497,41 @@ container: div = div(
     id="main-container"
 )
 
-# Attributes are properly typed
-img_element: img = img(
-    src="photo.jpg",
-    width=300,  # int
-    height=200,  # int
-    loading="lazy",  # Literal type
-    alt="Photo description"  # str
+# Head elements with proper typing
+metadata: meta = meta(
+    name="viewport", 
+    content="width=device-width, initial-scale=1"
 )
-```
 
-## Error Handling
-
-The library performs validation at runtime:
-
-```python
-# This will work
-div("Valid content", class_="valid-class")
-
-# Invalid attribute values will be caught
-# img(loading="invalid-value")  # Would raise an error for invalid literal
+# Attributes are properly typed
+stylesheet: link = link(
+    rel="stylesheet",  # Literal type
+    href="styles.css",  # str
+    media="screen"  # str
+)
 ```
 
 ## Best Practices
 
-1. **Use semantic HTML**: Choose elements based on meaning, not appearance
-2. **Leverage type hints**: Let your IDE help you with autocompletion
-3. **Structure your code**: Break complex layouts into functions
-4. **Use CSS classes**: Keep styling separate from structure
+1. **Organize head elements logically**: Group related metadata together
+2. **Use semantic HTML**: Choose elements based on meaning, not appearance
+3. **Leverage type hints**: Let your IDE help you with autocompletion
+4. **Structure your code**: Break complex layouts into functions
+5. **Separate concerns**: Keep head metadata separate from body content
 
 ```python
+def create_page_head(title: str, description: str) -> tuple:
+    """Create standard head elements for a page."""
+    return (
+        title(title),
+        meta(charset="utf-8"),
+        meta(name="viewport", content="width=device-width, initial-scale=1"),
+        meta(name="description", content=description),
+        link(rel="stylesheet", href="styles.css")
+    )
+
 def create_card(title: str, content: str, image_url: str) -> div:
+    """Create a reusable card component."""
     return div(
         img(src=image_url, alt=title, class_="card-image"),
         div(
@@ -368,10 +543,17 @@ def create_card(title: str, content: str, image_url: str) -> div:
     )
 
 # Usage
-card = create_card(
-    title="Product Name",
-    content="Product description here...",
-    image_url="product.jpg"
+doc = Document(
+    *create_page_head("My Site", "Welcome to my website"),
+    html_lang="en"
+)
+
+doc.add(
+    create_card(
+        title="Product Name",
+        content="Product description here...",
+        image_url="product.jpg"
+    )
 )
 ```
 
