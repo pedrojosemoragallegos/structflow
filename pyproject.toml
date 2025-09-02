@@ -7,6 +7,24 @@ readme = "README.md"
 license = "MIT"
 homepage = "https://github.com/pedrojosemoragallegos/structflow"
 repository = "https://github.com/pedrojosemoragallegos/structflow"
+documentation = "https://structflow.readthedocs.io"
+keywords = ["html", "generation", "web", "markup", "template", "type-safe"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing :: Markup :: HTML",
+    "Topic :: Software Development :: Code Generators",
+    "Typing :: Typed",
+]
 
 [tool.poetry.dependencies]
 python = ">=3.10, <3.14"
