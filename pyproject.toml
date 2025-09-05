@@ -1,13 +1,17 @@
-[tool.poetry]
+[build-system]
+requires = ["uv_build>=0.8.14,<0.9.0"]
+build-backend = "uv_build"
+
+[project]
 name = "structflow"
 version = "2.0.0"
 description = "A Python library for programmatic HTML generation with type safety and a clean API"
-authors = ["Pedro José Mora Gallegos <pedrojosemoragallegos@outlook.de>"]
 readme = "README.md"
 license = "MIT"
-homepage = "https://github.com/pedrojosemoragallegos/structflow"
-repository = "https://github.com/pedrojosemoragallegos/structflow"
-documentation = "https://structflow.readthedocs.io"
+authors = [
+    { name = "Pedro José Mora Gallegos", email = "pedrojosemoragallegos@outlook.de" },
+]
+requires-python = ">=3.10,<3.14"
 keywords = ["html", "generation", "web", "markup", "template", "type-safe"]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -26,12 +30,10 @@ classifiers = [
     "Typing :: Typed",
 ]
 
-[tool.poetry.dependencies]
-python = ">=3.10, <3.14"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[project.urls]
+Homepage = "https://github.com/pedrojosemoragallegos/structflow"
+Repository = "https://github.com/pedrojosemoragallegos/structflow"
+Documentation = "https://structflow.readthedocs.io"
 
 [tool.ruff]
 line-length = 88

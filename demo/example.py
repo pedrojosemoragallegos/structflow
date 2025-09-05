@@ -204,5 +204,5 @@ def build_html() -> str:
 
 if __name__ == "__main__":
     html_out = build_html()
-    with open("site.html", "w", encoding="utf-8") as f:
+    with open("./demo/site.html", "w", encoding="utf-8") as f:
         f.write(html_out)
