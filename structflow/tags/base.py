@@ -156,9 +156,7 @@ class Void(Tag):
         return sb
 
     def __repr__(self) -> str:
-        return f"{self.tag_name()}({
-            ', '.join(f'{k}={repr(v)}' for k, v in self._attributes.items())
-        }"
+        return f"{self.tag_name()}({', '.join(f'{k}={repr(v)}' for k, v in self._attributes.items())})"
 
 
 class Container(Tag):
