@@ -20,7 +20,6 @@ if typing.TYPE_CHECKING:
     from structflow.tags.base import Tag
 
 
-# TODO add support for passing either string, path or url to for script/css etc.
 class html(Container):
     def __init__(
         self,
