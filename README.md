@@ -453,7 +453,7 @@ doc.add(
     
     footer(
         div(
-            p("© 2024 StructFlow. Built with ❤️ and Python.", 
+            p("© 2025 StructFlow. Built with ❤️ and Python.", 
               class_="text-center text-muted"),
             class_="container py-4"
         ),
