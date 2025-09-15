@@ -6,6 +6,7 @@ from .base import Container, Void
 
 if typing.TYPE_CHECKING:
     from .base import AttributeValue
+    from .scripting import noscript, script, template
 
 
 class head(Container):
@@ -282,85 +283,6 @@ class link(Void):
             self._attributes["disabled"] = disabled
 
 
-class script(Container):
-    def __init__(
-        self,
-        *children: str,
-        src: typing.Optional[str] = None,
-        type: typing.Optional[str] = None,
-        async_: typing.Optional[bool] = None,
-        defer: typing.Optional[bool] = None,
-        crossorigin: typing.Optional[
-            typing.Literal["anonymous", "use-credentials"]
-        ] = None,
-        integrity: typing.Optional[str] = None,
-        nomodule: typing.Optional[bool] = None,
-        nonce: typing.Optional[str] = None,
-        referrerpolicy: typing.Optional[
-            typing.Literal[
-                "no-referrer",
-                "no-referrer-when-downgrade",
-                "origin",
-                "origin-when-cross-origin",
-                "same-origin",
-                "strict-origin",
-                "strict-origin-when-cross-origin",
-                "unsafe-url",
-            ]
-        ] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
-        **kwargs: AttributeValue,
-    ):
-        super().__init__(
-            *children,
-            id=id,
-            class_=class_,
-            style=style,
-            title=title,
-            lang=lang,
-            dir=dir,
-            tabindex=tabindex,
-            hidden=hidden,
-            draggable=draggable,
-            contenteditable=contenteditable,
-            spellcheck=spellcheck,
-            translate=translate,
-            accesskey=accesskey,
-            **kwargs,
-        )
-
-        if src is not None:
-            self._attributes["src"] = src
-        if type is not None:
-            self._attributes["type"] = type
-        if async_ is not None:
-            self._attributes["async"] = async_
-        if defer is not None:
-            self._attributes["defer"] = defer
-        if crossorigin is not None:
-            self._attributes["crossorigin"] = crossorigin
-        if integrity is not None:
-            self._attributes["integrity"] = integrity
-        if nomodule is not None:
-            self._attributes["nomodule"] = nomodule
-        if nonce is not None:
-            self._attributes["nonce"] = nonce
-        if referrerpolicy is not None:
-            self._attributes["referrerpolicy"] = referrerpolicy
-
-
 class style(Container):
     def __init__(
         self,
@@ -452,79 +374,3 @@ class base(Void):
             self._attributes["href"] = href
         if target is not None:
             self._attributes["target"] = target
-
-
-class noscript(Container):
-    def __init__(
-        self,
-        *children: str,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
-        **kwargs: AttributeValue,
-    ):
-        super().__init__(
-            *children,
-            id=id,
-            class_=class_,
-            style=style,
-            title=title,
-            lang=lang,
-            dir=dir,
-            tabindex=tabindex,
-            hidden=hidden,
-            draggable=draggable,
-            contenteditable=contenteditable,
-            spellcheck=spellcheck,
-            translate=translate,
-            accesskey=accesskey,
-            **kwargs,
-        )
-
-
-class template(Container):
-    def __init__(
-        self,
-        *children: str,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
-        **kwargs: AttributeValue,
-    ):
-        super().__init__(
-            *children,
-            id=id,
-            class_=class_,
-            style=style,
-            title=title,
-            lang=lang,
-            dir=dir,
-            tabindex=tabindex,
-            hidden=hidden,
-            draggable=draggable,
-            contenteditable=contenteditable,
-            spellcheck=spellcheck,
-            translate=translate,
-            accesskey=accesskey,
-            **kwargs,
-        )
