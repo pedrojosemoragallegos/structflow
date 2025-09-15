@@ -9,35 +9,35 @@ if typing.TYPE_CHECKING:
     from .types import AttributeValue
 
 
-class ins(Container):
-    def __init__(
+class ins(Container):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
-        *children: typing.Union[Tag, str],
-        cite: typing.Optional[str] = None,
-        datetime: typing.Optional[str] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        *children: Tag | str,
+        cite: str | None = None,
+        datetime: str | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
             *children,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -53,35 +53,35 @@ class ins(Container):
             self._attributes["datetime"] = datetime
 
 
-class del_(Container):
-    def __init__(
+class del_(Container):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
-        *children: typing.Union[Tag, str],
-        cite: typing.Optional[str] = None,
-        datetime: typing.Optional[str] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        *children: Tag | str,
+        cite: str | None = None,
+        datetime: str | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
             *children,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -96,5 +96,5 @@ class del_(Container):
         if datetime is not None:
             self._attributes["datetime"] = datetime
 
-    def tag_name(self):
+    def tag_name(self) -> str:
         return "del"

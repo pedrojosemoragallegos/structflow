@@ -1,34 +1,36 @@
 from __future__ import annotations
 
-import html as html
+import html
 import typing
 from abc import ABC, abstractmethod
 
-from .types import AttributeValue
+if typing.TYPE_CHECKING:
+    from .types import AttributeValue
 
 
 class Tag(ABC):
-    def __init__(  # noqa: C901
+    def __init__(  # noqa: C901, PLR0912, PLR0913
         self,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        *,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         self._attributes: dict[str, AttributeValue] = {}
 
-        if id is not None:
-            self._attributes["id"] = id
+        if id_ is not None:
+            self._attributes["id_"] = id_
         if class_ is not None:
             if isinstance(class_, list):
                 self._attributes["class"] = " ".join(class_)
@@ -40,8 +42,8 @@ class Tag(ABC):
             self._attributes["title"] = title
         if lang is not None:
             self._attributes["lang"] = lang
-        if dir is not None:
-            self._attributes["dir"] = dir
+        if dir_ is not None:
+            self._attributes["dir"] = dir_
         if tabindex is not None:
             self._attributes["tabindex"] = tabindex
         if hidden is not None:
@@ -66,7 +68,7 @@ class Tag(ABC):
     def __getattr__(self, name: str) -> AttributeValue:
         return self._attributes.get(name)
 
-    def tag_name(self):
+    def tag_name(self) -> str:
         return self.__class__.__name__
 
     @abstractmethod
@@ -74,6 +76,7 @@ class Tag(ABC):
         self,
         sb: list[str],
         indent_level: int,
+        *,
         pretty: bool,
         xhtml: bool,
     ) -> list[str]: ...
@@ -83,30 +86,31 @@ class Tag(ABC):
 
 
 class Void(Tag):
-    def __init__(
+    def __init__(  # noqa: PLR0913
         self,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        *,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -125,7 +129,7 @@ class Void(Tag):
         for key, value in self._attributes.items():
             if value is None:
                 continue
-            elif isinstance(value, bool):
+            if isinstance(value, bool):
                 if value:
                     attributes.append(key)
             else:
@@ -138,6 +142,7 @@ class Void(Tag):
         self,
         sb: list[str],
         indent_level: int,
+        *,
         pretty: bool,
         xhtml: bool,
     ) -> list[str]:
@@ -156,35 +161,35 @@ class Void(Tag):
         return sb
 
     def __repr__(self) -> str:
-        return f"{self.tag_name()}({', '.join(f'{k}={repr(v)}' for k, v in self._attributes.items())})"
+        return f"{self.tag_name()}({', '.join(f'{k}={v!r}' for k, v in self._attributes.items())})"  # noqa: E501
 
 
 class Container(Tag):
-    def __init__(
+    def __init__(  # noqa: PLR0913
         self,
-        *children: typing.Union[Tag, str],
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        *children: Tag | str,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -194,7 +199,7 @@ class Container(Tag):
             accesskey=accesskey,
             **kwargs,
         )
-        self._children: list[typing.Union[Tag, str]] = list(children)
+        self._children: list[Tag | str] = list(children)
 
     def _format_attributes(self) -> str:
         if not self._attributes:
@@ -204,7 +209,7 @@ class Container(Tag):
         for key, value in self._attributes.items():
             if value is None:
                 continue
-            elif isinstance(value, bool):
+            if isinstance(value, bool):
                 if value:
                     attributes.append(key)
             else:
@@ -216,18 +221,28 @@ class Container(Tag):
     def __len__(self) -> int:
         return len(self._children)
 
-    def __iter__(self) -> typing.Iterator[typing.Union[Tag, str]]:
+    def __iter__(self) -> typing.Iterator[Tag | str]:
         return iter(self._children)
 
-    def __getitem__(self, index: int) -> typing.Union[Tag, str]:
+    def __getitem__(self, index: int) -> Tag | str:
         return self._children[index]
 
     def _render_children(
-        self, sb: list[str], indent_level: int, pretty: bool, xhtml: bool
+        self,
+        sb: list[str],
+        indent_level: int,
+        *,
+        pretty: bool,
+        xhtml: bool,
     ) -> list[str]:
         for child in self._children:
             if isinstance(child, Tag):
-                child._render(sb, indent_level + 1, pretty, xhtml)
+                child._render(  # noqa: SLF001 TODO: correct it
+                    sb=sb,
+                    indent_level=indent_level + 1,
+                    pretty=pretty,
+                    xhtml=xhtml,
+                )
             else:
                 text: str = self._escape_text(str(child))
                 if pretty:
@@ -241,6 +256,7 @@ class Container(Tag):
         self,
         sb: list[str],
         indent_level: int,
+        *,
         pretty: bool,
         xhtml: bool,
     ) -> list[str]:
@@ -253,7 +269,12 @@ class Container(Tag):
         if pretty:
             sb.append("\n")
 
-        self._render_children(sb, indent_level, pretty, xhtml)
+        self._render_children(
+            sb=sb,
+            indent_level=indent_level,
+            pretty=pretty,
+            xhtml=xhtml,
+        )
 
         if pretty:
             sb.append(" " * indent_level)
@@ -265,4 +286,4 @@ class Container(Tag):
         return sb
 
     def __repr__(self) -> str:
-        return f"{self.tag_name()}({', '.join(f'{k}={repr(v)}' for k, v in self._attributes.items())}{f', children={len(self._children)}'})"
+        return f"{self.tag_name()}({', '.join(f'{k}={v!r}' for k, v in self._attributes.items())}{f', children={len(self._children)}'})"  # noqa: E501

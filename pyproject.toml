@@ -37,8 +37,16 @@ Documentation = "https://structflow.readthedocs.io"
 
 [tool.ruff]
 line-length = 88
-select = ["E", "F", "W", "C90"]
-ignore = ["E501"]
+select = ["ALL"]
+ignore = [
+    "D100", # docstring in public module
+    "D101", # docstring
+    "D102", # docstring public method
+    "D103", # docstring in public function
+    "D104", # docstring public packageRuff
+    "D105", # docstring magic function
+    "D107", # docstring __init__
+]
 
 [tool.ruff.lint]
 extend-select = ["I", "D205", "D415"]
@@ -47,4 +55,4 @@ extend-select = ["I", "D205", "D415"]
 combine-as-imports = true
 
 [dependency-groups]
-dev = ["mypy>=1.18.1"]
+dev = ["mypy>=1.18.1", "typing-extensions>=4.15.0"]

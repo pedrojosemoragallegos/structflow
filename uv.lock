@@ -61,18 +61,22 @@ wheels = [
 
 [[package]]
 name = "structflow"
-version = "2.0.0"
+version = "2.0.1"
 source = { editable = "." }
 
 [package.dev-dependencies]
 dev = [
     { name = "mypy" },
+    { name = "typing-extensions" },
 ]
 
 [package.metadata]
 
 [package.metadata.requires-dev]
-dev = [{ name = "mypy", specifier = ">=1.18.1" }]
+dev = [
+    { name = "mypy", specifier = ">=1.18.1" },
+    { name = "typing-extensions", specifier = ">=4.15.0" },
+]
 
 [[package]]
 name = "tomli"

@@ -8,56 +8,53 @@ if typing.TYPE_CHECKING:
     from .types import AttributeValue
 
 
-class script(Container):
-    def __init__(  # noqa: C901
+class script(Container):  # noqa: N801
+    def __init__(  # noqa: C901, PLR0913
         self,
-        *children: typing.Union[script, noscript, template, str],
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
-        src: typing.Optional[str] = None,
-        type: typing.Optional[str] = None,
-        async_: typing.Optional[bool] = None,
-        defer: typing.Optional[bool] = None,
-        crossorigin: typing.Optional[
-            typing.Literal["anonymous", "use-credentials"]
-        ] = None,
-        integrity: typing.Optional[str] = None,
-        referrerpolicy: typing.Optional[
-            typing.Literal[
-                "no-referrer",
-                "no-referrer-when-downgrade",
-                "origin",
-                "origin-when-cross-origin",
-                "same-origin",
-                "strict-origin",
-                "strict-origin-when-cross-origin",
-                "unsafe-url",
-            ]
-        ] = None,
-        nomodule: typing.Optional[bool] = None,
-        fetchpriority: typing.Optional[typing.Literal["high", "low", "auto"]] = None,
-        blocking: typing.Optional[str] = None,
+        *children: script | noscript | template | str,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
+        src: str | None = None,
+        type_: str | None = None,
+        async_: bool | None = None,
+        defer: bool | None = None,
+        crossorigin: typing.Literal["anonymous", "use-credentials"] | None = None,
+        integrity: str | None = None,
+        referrerpolicy: typing.Literal[
+            "no-referrer",
+            "no-referrer-when-downgrade",
+            "origin",
+            "origin-when-cross-origin",
+            "same-origin",
+            "strict-origin",
+            "strict-origin-when-cross-origin",
+            "unsafe-url",
+        ]
+        | None = None,
+        nomodule: bool | None = None,
+        fetchpriority: typing.Literal["high", "low", "auto"] | None = None,
+        blocking: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
             *children,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -69,8 +66,8 @@ class script(Container):
         )
         if src is not None:
             self._attributes["src"] = src
-        if type is not None:
-            self._attributes["type"] = type
+        if type_ is not None:
+            self._attributes["type"] = type_
         if async_ is not None:
             self._attributes["async"] = async_
         if defer is not None:
@@ -89,36 +86,36 @@ class script(Container):
             self._attributes["blocking"] = blocking
 
     def __repr__(self) -> str:
-        return f"{self.tag_name()}({', '.join(f'{k}={repr(v)}' for k, v in self._attributes.items())}{f', children={len(self._children)}'})"
+        return f"{self.tag_name()}({', '.join(f'{k}={v!r}' for k, v in self._attributes.items())}{f', children={len(self._children)}'})"  # noqa: E501
 
 
-class noscript(Container):
-    def __init__(
+class noscript(Container):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
-        *children: typing.Union[script, noscript, template, str],
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        *children: script | noscript | template | str,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
             *children,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -130,36 +127,36 @@ class noscript(Container):
         )
 
     def __repr__(self) -> str:
-        return f"{self.tag_name()}({', '.join(f'{k}={repr(v)}' for k, v in self._attributes.items())}{f', children={len(self._children)}'})"
+        return f"{self.tag_name()}({', '.join(f'{k}={v!r}' for k, v in self._attributes.items())}{f', children={len(self._children)}'})"  # noqa: E501
 
 
-class template(Container):
-    def __init__(
+class template(Container):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
-        *children: typing.Union[script, noscript, template, str],
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        *children: script | noscript | template | str,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
             *children,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -171,37 +168,37 @@ class template(Container):
         )
 
     def __repr__(self) -> str:
-        return f"{self.tag_name()}({', '.join(f'{k}={repr(v)}' for k, v in self._attributes.items())}{f', children={len(self._children)}'})"
+        return f"{self.tag_name()}({', '.join(f'{k}={v!r}' for k, v in self._attributes.items())}{f', children={len(self._children)}'})"  # noqa: E501
 
 
-class slot(Container):
-    def __init__(
+class slot(Container):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
-        *children: typing.Union[slot, canvas, script, noscript, template, str],
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
-        name: typing.Optional[str] = None,
+        *children: slot | canvas | script | noscript | template | str,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
+        name: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
             *children,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -216,40 +213,40 @@ class slot(Container):
 
     def __repr__(self) -> str:
         return (
-            f"{self.tag_name()}({', '.join(f'{k}={repr(v)}' for k, v in self._attributes.items())}"
+            f"{self.tag_name()}({', '.join(f'{k}={v!r}' for k, v in self._attributes.items())}"  # noqa: E501
             f", children={len(self._children)})"
         )
 
 
-class canvas(Container):
-    def __init__(
+class canvas(Container):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
-        *children: typing.Union[slot, canvas, script, noscript, template, str],
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
-        width: typing.Optional[int] = None,
-        height: typing.Optional[int] = None,
+        *children: slot | canvas | script | noscript | template | str,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
+        width: int | None = None,
+        height: int | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
             *children,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -266,6 +263,6 @@ class canvas(Container):
 
     def __repr__(self) -> str:
         return (
-            f"{self.tag_name()}({', '.join(f'{k}={repr(v)}' for k, v in self._attributes.items())}"
+            f"{self.tag_name()}({', '.join(f'{k}={v!r}' for k, v in self._attributes.items())}"  # noqa: E501
             f", children={len(self._children)})"
         )

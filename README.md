@@ -136,7 +136,7 @@ All elements support both common HTML attributes and element-specific ones:
 
 ```python
 # Common attributes
-div(id="main", class_="container", style="color: blue;")
+div(id_="main", class_="container", style="color: blue;")
 
 # Element-specific attributes
 img(src="image.jpg", alt="Description", width=300, height=200)
@@ -243,12 +243,12 @@ form(
         legend("Contact Information"),
         div(
             label("Name:", for_="name"),
-            input(type="text", id="name", name="name", required=True),
+            input(type="text", id_="name", name="name", required=True),
             class_="form-group"
         ),
         div(
             label("Email:", for_="email"),
-            input(type="email", id="email", name="email", required=True),
+            input(type="email", id_="email", name="email", required=True),
             class_="form-group"
         ),
         button("Submit", type="submit", class_="btn btn-primary")
@@ -447,7 +447,7 @@ doc.add(
                 ),
                 class_="container py-5"
             ),
-            id="features"
+            id_="features"
         )
     ),
     
@@ -494,7 +494,7 @@ from structflow.tags import div, span, meta, link
 # Type-safe element creation
 container: div = div(
     span("Hello", class_="greeting"),
-    id="main-container"
+    id_="main-container"
 )
 
 # Head elements with proper typing

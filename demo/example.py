@@ -1,3 +1,5 @@
+from pathlib import Path  # noqa: INP001
+
 from structflow.document import Document
 from structflow.tags import (
     a,
@@ -16,7 +18,7 @@ from structflow.tags import (
     h1,
     h2,
     header,
-    input,
+    input_,
     label,
     li,
     link,
@@ -62,12 +64,12 @@ def build_html() -> str:
         ),
         link(rel="stylesheet", href="/static/main.css"),
         style(
-            """:root { --brand: #4f46e5; } body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; } header, footer { background:#111827; color:#fff; padding:1rem; } nav a { margin-right:.75rem; } .container { max-width: 960px; margin: 0 auto; padding: 1rem; } .card { border:1px solid #e5e7eb; border-radius: 12px; padding: 1rem; } table { border-collapse: collapse; width:100%; } th, td { border:1px solid #e5e7eb; padding:.5rem; text-align:left; }"""
+            """:root { --brand: #4f46e5; } body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; } header, footer { background:#111827; color:#fff; padding:1rem; } nav a { margin-right:.75rem; } .container { max-width: 960px; margin: 0 auto; padding: 1rem; } .card { border:1px solid #e5e7eb; border-radius: 12px; padding: 1rem; } table { border-collapse: collapse; width:100%; } th, td { border:1px solid #e5e7eb; padding:.5rem; text-align:left; }""",  # noqa: E501
         ),
         script(src="https://cdn.example.com/lib.min.js", defer=True),
         script("""window.APP = { version: "1.0.0" };"""),
         noscript(
-            "<strong>JavaScript is disabled.</strong> Some features may not work."
+            "<strong>JavaScript is disabled.</strong> Some features may not work.",
         ),
         html_lang="en",
     )
@@ -78,7 +80,7 @@ def build_html() -> str:
                 h1("My Demo Site"),
                 p(small("A complete example generated with your tag system.")),
                 class_="container",
-            )
+            ),
         ),
         nav(
             div(
@@ -86,14 +88,14 @@ def build_html() -> str:
                 a("Docs", href="/docs"),
                 a("About", href="/about"),
                 class_="container",
-            )
+            ),
         ),
         main(
             div(
                 section(
                     h2("Welcome"),
                     p(
-                        "This page demonstrates a variety of HTML elements built with your ",
+                        "This page demonstrates a variety of HTML elements built with your ",  # noqa: E501
                         strong("<structflow.tags>"),
                         " package.",
                     ),
@@ -108,14 +110,14 @@ def build_html() -> str:
                     h2("Features"),
                     ul(
                         li(
-                            "Semantic sections (header/nav/main/section/article/aside/footer)"
+                            "Semantic sections (header/nav/main/section/article/aside/footer)",  # noqa: E501
                         ),
                         li(
-                            "Typography and grouping elements (p, ul/ol/li, blockquote, pre/code)"
+                            "Typography and grouping elements (p, ul/ol/li, blockquote, pre/code)",  # noqa: E501
                         ),
                         li("Tables and forms"),
                         li(
-                            "Head management (meta/link/style/script/noscript/base/title)"
+                            "Head management (meta/link/style/script/noscript/base/title)",  # noqa: E501
                         ),
                     ),
                     class_="card",
@@ -123,7 +125,7 @@ def build_html() -> str:
                 section(
                     h2("Quote & Code"),
                     blockquote(
-                        '"Simplicity is prerequisite for reliability." — Edsger W. Dijkstra'
+                        '"Simplicity is prerequisite for reliability." — Edsger W. Dijkstra',  # noqa: E501
                     ),
                     pre(code('print("Hello, structflow!")')),
                     class_="card",
@@ -146,8 +148,8 @@ def build_html() -> str:
                     form(
                         div(
                             label("Name", for_="name"),
-                            input(
-                                id="name",
+                            input_(
+                                id_="name",
                                 name="name",
                                 type="text",
                                 placeholder="Your name",
@@ -160,14 +162,14 @@ def build_html() -> str:
                                 option("Support", value="support"),
                                 option("Sales", value="sales"),
                                 option("Feedback", value="feedback"),
-                                id="topic",
+                                id_="topic",
                                 name="topic",
                             ),
                         ),
                         div(
                             label("Message", for_="msg"),
                             textarea(
-                                id="msg",
+                                id_="msg",
                                 name="message",
                                 rows=4,
                                 placeholder="How can we help?",
@@ -184,10 +186,10 @@ def build_html() -> str:
                         span("📦", aria_hidden="true"),
                         figcaption(em("Fast shipping on all orders")),
                         class_="card",
-                    )
+                    ),
                 ),
                 class_="container",
-            )
+            ),
         ),
         footer(
             div(
@@ -195,7 +197,7 @@ def build_html() -> str:
                 span("Built with "),
                 mark("structflow.tags"),
                 class_="container",
-            )
+            ),
         ),
     )
 
@@ -204,5 +206,5 @@ def build_html() -> str:
 
 if __name__ == "__main__":
     html_out = build_html()
-    with open("./demo/site.html", "w", encoding="utf-8") as f:
-        f.write(html_out)
+    with Path("./demo/site.html").open("w", encoding="utf-8") as file:
+        file.write(html_out)

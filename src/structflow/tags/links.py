@@ -9,54 +9,51 @@ if typing.TYPE_CHECKING:
     from .types import AttributeValue
 
 
-class a(Container):
-    def __init__(
+class a(Container):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
-        *children: typing.Union[Tag, str],
-        href: typing.Optional[str] = None,
-        target: typing.Optional[
-            typing.Literal["_self", "_blank", "_parent", "_top"]
-        ] = None,
-        download: typing.Optional[typing.Union[bool, str]] = None,
-        rel: typing.Optional[typing.Union[str, list[str]]] = None,
-        hreflang: typing.Optional[str] = None,
-        type: typing.Optional[str] = None,
-        referrerpolicy: typing.Optional[
-            typing.Literal[
-                "no-referrer",
-                "no-referrer-when-downgrade",
-                "origin",
-                "origin-when-cross-origin",
-                "same-origin",
-                "strict-origin",
-                "strict-origin-when-cross-origin",
-                "unsafe-url",
-            ]
-        ] = None,
-        ping: typing.Optional[typing.Union[str, list[str]]] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        *children: Tag | str,
+        href: str | None = None,
+        target: typing.Literal["_self", "_blank", "_parent", "_top"] | None = None,
+        download: bool | str | None = None,
+        rel: str | list[str] | None = None,
+        hreflang: str | None = None,
+        type_: str | None = None,
+        referrerpolicy: typing.Literal[
+            "no-referrer",
+            "no-referrer-when-downgrade",
+            "origin",
+            "origin-when-cross-origin",
+            "same-origin",
+            "strict-origin",
+            "strict-origin-when-cross-origin",
+            "unsafe-url",
+        ]
+        | None = None,
+        ping: str | list[str] | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
             *children,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -77,8 +74,8 @@ class a(Container):
             self._attributes["rel"] = " ".join(rel) if isinstance(rel, list) else rel
         if hreflang is not None:
             self._attributes["hreflang"] = hreflang
-        if type is not None:
-            self._attributes["type"] = type
+        if type_ is not None:
+            self._attributes["type"] = type_
         if referrerpolicy is not None:
             self._attributes["referrerpolicy"] = referrerpolicy
         if ping is not None:
@@ -87,55 +84,51 @@ class a(Container):
             )
 
 
-class area(Void):
-    def __init__(
+class area(Void):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
-        alt: typing.Optional[str] = None,
-        coords: typing.Optional[str] = None,
-        shape: typing.Optional[
-            typing.Literal["rect", "circle", "poly", "default"]
-        ] = None,
-        href: typing.Optional[str] = None,
-        target: typing.Optional[
-            typing.Literal["_self", "_blank", "_parent", "_top"]
-        ] = None,
-        download: typing.Optional[typing.Union[bool, str]] = None,
-        ping: typing.Optional[typing.Union[str, list[str]]] = None,
-        rel: typing.Optional[typing.Union[str, list[str]]] = None,
-        referrerpolicy: typing.Optional[
-            typing.Literal[
-                "no-referrer",
-                "no-referrer-when-downgrade",
-                "origin",
-                "origin-when-cross-origin",
-                "same-origin",
-                "strict-origin",
-                "strict-origin-when-cross-origin",
-                "unsafe-url",
-            ]
-        ] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        *,
+        alt: str | None = None,
+        coords: str | None = None,
+        shape: typing.Literal["rect", "circle", "poly", "default"] | None = None,
+        href: str | None = None,
+        target: typing.Literal["_self", "_blank", "_parent", "_top"] | None = None,
+        download: bool | str | None = None,
+        ping: str | list[str] | None = None,
+        rel: str | list[str] | None = None,
+        referrerpolicy: typing.Literal[
+            "no-referrer",
+            "no-referrer-when-downgrade",
+            "origin",
+            "origin-when-cross-origin",
+            "same-origin",
+            "strict-origin",
+            "strict-origin-when-cross-origin",
+            "unsafe-url",
+        ]
+        | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,

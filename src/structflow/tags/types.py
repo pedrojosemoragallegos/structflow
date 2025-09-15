@@ -1,3 +1,3 @@
 import typing
 
-AttributeValue: typing.TypeAlias = typing.Union[str, int, float, bool, None]
+AttributeValue: typing.TypeAlias = str | int | float | bool | None

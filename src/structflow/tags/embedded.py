@@ -9,47 +9,45 @@ if typing.TYPE_CHECKING:
     from .types import AttributeValue
 
 
-class img(Void):
-    def __init__(  # noqa: C901
+class img(Void):  # noqa: N801
+    def __init__(  # noqa: C901, PLR0912, PLR0913
         self,
         *,
-        alt: typing.Optional[str] = None,
-        src: typing.Optional[str] = None,
-        srcset: typing.Optional[typing.Union[str, list[str]]] = None,
-        sizes: typing.Optional[str] = None,
-        crossorigin: typing.Optional[
-            typing.Literal["anonymous", "use-credentials"]
-        ] = None,
-        usemap: typing.Optional[str] = None,
-        ismap: typing.Optional[bool] = None,
-        width: typing.Optional[int] = None,
-        height: typing.Optional[int] = None,
-        referrerpolicy: typing.Optional[str] = None,
-        decoding: typing.Optional[typing.Literal["sync", "async", "auto"]] = None,
-        loading: typing.Optional[typing.Literal["eager", "lazy"]] = None,
-        fetchpriority: typing.Optional[typing.Literal["high", "low", "auto"]] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        alt: str | None = None,
+        src: str | None = None,
+        srcset: str | list[str] | None = None,
+        sizes: str | None = None,
+        crossorigin: typing.Literal["anonymous", "use-credentials"] | None = None,
+        usemap: str | None = None,
+        ismap: bool | None = None,
+        width: int | None = None,
+        height: int | None = None,
+        referrerpolicy: str | None = None,
+        decoding: typing.Literal["sync", "async", "auto"] | None = None,
+        loading: typing.Literal["eager", "lazy"] | None = None,
+        fetchpriority: typing.Literal["high", "low", "auto"] | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -90,33 +88,33 @@ class img(Void):
             self._attributes["fetchpriority"] = fetchpriority
 
 
-class picture(Container):
-    def __init__(
+class picture(Container):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
-        *children: typing.Union[Tag, str],
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        *children: Tag | str,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
             *children,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -128,39 +126,39 @@ class picture(Container):
         )
 
 
-class source(Void):
-    def __init__(
+class source(Void):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
         *,
-        src: typing.Optional[str] = None,
-        type: typing.Optional[str] = None,
-        srcset: typing.Optional[typing.Union[str, list[str]]] = None,
-        sizes: typing.Optional[str] = None,
-        media: typing.Optional[str] = None,
-        width: typing.Optional[int] = None,
-        height: typing.Optional[int] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        src: str | None = None,
+        type_: str | None = None,
+        srcset: str | list[str] | None = None,
+        sizes: str | None = None,
+        media: str | None = None,
+        width: int | None = None,
+        height: int | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -172,8 +170,8 @@ class source(Void):
         )
         if src is not None:
             self._attributes["src"] = src
-        if type is not None:
-            self._attributes["type"] = type
+        if type_ is not None:
+            self._attributes["type"] = type_
         if srcset is not None:
             if isinstance(srcset, list):
                 self._attributes["srcset"] = ", ".join(srcset)
@@ -189,41 +187,44 @@ class source(Void):
             self._attributes["height"] = height
 
 
-class track(Void):
-    def __init__(
+class track(Void):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
         *,
-        kind: typing.Optional[
-            typing.Literal[
-                "subtitles", "captions", "descriptions", "chapters", "metadata"
-            ]
-        ] = None,
-        src: typing.Optional[str] = None,
-        srclang: typing.Optional[str] = None,
-        label: typing.Optional[str] = None,
-        default: typing.Optional[bool] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        kind: typing.Literal[
+            "subtitles",
+            "captions",
+            "descriptions",
+            "chapters",
+            "metadata",
+        ]
+        | None = None,
+        src: str | None = None,
+        srclang: str | None = None,
+        label: str | None = None,
+        default: bool | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -245,44 +246,42 @@ class track(Void):
             self._attributes["default"] = default
 
 
-class audio(Container):
-    def __init__(
+class audio(Container):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
-        *children: typing.Union[Tag, str],
-        src: typing.Optional[str] = None,
-        preload: typing.Optional[typing.Literal["none", "metadata", "auto"]] = None,
-        autoplay: typing.Optional[bool] = None,
-        loop: typing.Optional[bool] = None,
-        muted: typing.Optional[bool] = None,
-        controls: typing.Optional[bool] = None,
-        controlslist: typing.Optional[str] = None,
-        crossorigin: typing.Optional[
-            typing.Literal["anonymous", "use-credentials"]
-        ] = None,
-        disableremoteplayback: typing.Optional[bool] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        *children: Tag | str,
+        src: str | None = None,
+        preload: typing.Literal["none", "metadata", "auto"] | None = None,
+        autoplay: bool | None = None,
+        loop: bool | None = None,
+        muted: bool | None = None,
+        controls: bool | None = None,
+        controlslist: str | None = None,
+        crossorigin: typing.Literal["anonymous", "use-credentials"] | None = None,
+        disableremoteplayback: bool | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
             *children,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -312,49 +311,47 @@ class audio(Container):
             self._attributes["disableremoteplayback"] = disableremoteplayback
 
 
-class video(Container):
-    def __init__(  # noqa: C901
+class video(Container):  # noqa: N801
+    def __init__(  # noqa: C901, PLR0912, PLR0913
         self,
-        *children: typing.Union[Tag, str],
-        src: typing.Optional[str] = None,
-        preload: typing.Optional[typing.Literal["none", "metadata", "auto"]] = None,
-        autoplay: typing.Optional[bool] = None,
-        loop: typing.Optional[bool] = None,
-        muted: typing.Optional[bool] = None,
-        controls: typing.Optional[bool] = None,
-        controlslist: typing.Optional[str] = None,
-        playsinline: typing.Optional[bool] = None,
-        width: typing.Optional[int] = None,
-        height: typing.Optional[int] = None,
-        poster: typing.Optional[str] = None,
-        crossorigin: typing.Optional[
-            typing.Literal["anonymous", "use-credentials"]
-        ] = None,
-        disablepictureinpicture: typing.Optional[bool] = None,
-        disableremoteplayback: typing.Optional[bool] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        *children: Tag | str,
+        src: str | None = None,
+        preload: typing.Literal["none", "metadata", "auto"] | None = None,
+        autoplay: bool | None = None,
+        loop: bool | None = None,
+        muted: bool | None = None,
+        controls: bool | None = None,
+        controlslist: str | None = None,
+        playsinline: bool | None = None,
+        width: int | None = None,
+        height: int | None = None,
+        poster: str | None = None,
+        crossorigin: typing.Literal["anonymous", "use-credentials"] | None = None,
+        disablepictureinpicture: bool | None = None,
+        disableremoteplayback: bool | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
             *children,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -394,36 +391,35 @@ class video(Container):
             self._attributes["disableremoteplayback"] = disableremoteplayback
 
 
-class audio_source(audio):
-    def __init__(
+class audio_source(audio):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
+        *,
         sources: typing.Iterable[source],
-        tracks: typing.Optional[typing.Iterable[track]] = None,
-        src: typing.Optional[str] = None,
-        preload: typing.Optional[typing.Literal["none", "metadata", "auto"]] = None,
-        autoplay: typing.Optional[bool] = None,
-        loop: typing.Optional[bool] = None,
-        muted: typing.Optional[bool] = None,
-        controls: typing.Optional[bool] = None,
-        controlslist: typing.Optional[str] = None,
-        crossorigin: typing.Optional[
-            typing.Literal["anonymous", "use-credentials"]
-        ] = None,
-        disableremoteplayback: typing.Optional[bool] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
-    ):
+        tracks: typing.Iterable[track] | None = None,
+        src: str | None = None,
+        preload: typing.Literal["none", "metadata", "auto"] | None = None,
+        autoplay: bool | None = None,
+        loop: bool | None = None,
+        muted: bool | None = None,
+        controls: bool | None = None,
+        controlslist: str | None = None,
+        crossorigin: typing.Literal["anonymous", "use-credentials"] | None = None,
+        disableremoteplayback: bool | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
+    ) -> None:
         children: list[Tag] = []
         children.extend(sources)
         if tracks:
@@ -440,12 +436,12 @@ class audio_source(audio):
             controlslist=controlslist,
             crossorigin=crossorigin,
             disableremoteplayback=disableremoteplayback,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -456,41 +452,40 @@ class audio_source(audio):
         )
 
 
-class video_source(video):
-    def __init__(
+class video_source(video):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
+        *,
         sources: typing.Iterable[source],
-        tracks: typing.Optional[typing.Iterable[track]] = None,
-        src: typing.Optional[str] = None,
-        preload: typing.Optional[typing.Literal["none", "metadata", "auto"]] = None,
-        autoplay: typing.Optional[bool] = None,
-        loop: typing.Optional[bool] = None,
-        muted: typing.Optional[bool] = None,
-        controls: typing.Optional[bool] = None,
-        controlslist: typing.Optional[str] = None,
-        playsinline: typing.Optional[bool] = None,
-        width: typing.Optional[int] = None,
-        height: typing.Optional[int] = None,
-        poster: typing.Optional[str] = None,
-        crossorigin: typing.Optional[
-            typing.Literal["anonymous", "use-credentials"]
-        ] = None,
-        disablepictureinpicture: typing.Optional[bool] = None,
-        disableremoteplayback: typing.Optional[bool] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
-    ):
+        tracks: typing.Iterable[track] | None = None,
+        src: str | None = None,
+        preload: typing.Literal["none", "metadata", "auto"] | None = None,
+        autoplay: bool | None = None,
+        loop: bool | None = None,
+        muted: bool | None = None,
+        controls: bool | None = None,
+        controlslist: str | None = None,
+        playsinline: bool | None = None,
+        width: int | None = None,
+        height: int | None = None,
+        poster: str | None = None,
+        crossorigin: typing.Literal["anonymous", "use-credentials"] | None = None,
+        disablepictureinpicture: bool | None = None,
+        disableremoteplayback: bool | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
+    ) -> None:
         children: list[Tag] = []
         children.extend(sources)
         if tracks:
@@ -512,12 +507,12 @@ class video_source(video):
             crossorigin=crossorigin,
             disablepictureinpicture=disablepictureinpicture,
             disableremoteplayback=disableremoteplayback,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -528,36 +523,36 @@ class video_source(video):
         )
 
 
-class embed(Void):
-    def __init__(
+class embed(Void):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
         *,
-        src: typing.Optional[str] = None,
-        type: typing.Optional[str] = None,
-        width: typing.Optional[int] = None,
-        height: typing.Optional[int] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        src: str | None = None,
+        type_: str | None = None,
+        width: int | None = None,
+        height: int | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -569,53 +564,53 @@ class embed(Void):
         )
         if src is not None:
             self._attributes["src"] = src
-        if type is not None:
-            self._attributes["type"] = type
+        if type_ is not None:
+            self._attributes["type"] = type_
         if width is not None:
             self._attributes["width"] = width
         if height is not None:
             self._attributes["height"] = height
 
 
-class iframe(Container):
-    def __init__(  # noqa: C901
+class iframe(Container):  # noqa: N801
+    def __init__(  # noqa: C901, PLR0913
         self,
-        *children: typing.Union[Tag, str],
-        src: typing.Optional[str] = None,
-        name: typing.Optional[str] = None,
-        srcdoc: typing.Optional[str] = None,
-        width: typing.Optional[int] = None,
-        height: typing.Optional[int] = None,
-        allow: typing.Optional[str] = None,
-        allowfullscreen: typing.Optional[bool] = None,
-        sandbox: typing.Optional[typing.Union[str, list[str]]] = None,
-        referrerpolicy: typing.Optional[str] = None,
-        loading: typing.Optional[typing.Literal["eager", "lazy"]] = None,
-        csp: typing.Optional[str] = None,
-        allowpaymentrequest: typing.Optional[bool] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        *children: Tag | str,
+        src: str | None = None,
+        name: str | None = None,
+        srcdoc: str | None = None,
+        width: int | None = None,
+        height: int | None = None,
+        allow: str | None = None,
+        allowfullscreen: bool | None = None,
+        sandbox: str | list[str] | None = None,
+        referrerpolicy: str | None = None,
+        loading: typing.Literal["eager", "lazy"] | None = None,
+        csp: str | None = None,
+        allowpaymentrequest: bool | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
             *children,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -653,41 +648,41 @@ class iframe(Container):
             self._attributes["allowpaymentrequest"] = allowpaymentrequest
 
 
-class object(Container):
-    def __init__(
+class object_(Container):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
-        *children: typing.Union[Tag, str],
-        data: typing.Optional[str] = None,
-        type: typing.Optional[str] = None,
-        name: typing.Optional[str] = None,
-        form: typing.Optional[str] = None,
-        width: typing.Optional[int] = None,
-        height: typing.Optional[int] = None,
-        usemap: typing.Optional[str] = None,
-        typemustmatch: typing.Optional[bool] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        *children: Tag | str,
+        data: str | None = None,
+        type_: str | None = None,
+        name: str | None = None,
+        form: str | None = None,
+        width: int | None = None,
+        height: int | None = None,
+        usemap: str | None = None,
+        typemustmatch: bool | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
             *children,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -699,8 +694,8 @@ class object(Container):
         )
         if data is not None:
             self._attributes["data"] = data
-        if type is not None:
-            self._attributes["type"] = type
+        if type_ is not None:
+            self._attributes["type"] = type_
         if name is not None:
             self._attributes["name"] = name
         if form is not None:
@@ -715,34 +710,34 @@ class object(Container):
             self._attributes["typemustmatch"] = typemustmatch
 
 
-class param(Void):
-    def __init__(
+class param(Void):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
         *,
-        name: typing.Optional[str] = None,
-        value: typing.Optional[str] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        name: str | None = None,
+        value: str | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -758,35 +753,35 @@ class param(Void):
             self._attributes["value"] = value
 
 
-class canvas(Container):
-    def __init__(
+class canvas(Container):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
-        *children: typing.Union[Tag, str],
-        width: typing.Optional[int] = None,
-        height: typing.Optional[int] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        *children: Tag | str,
+        width: int | None = None,
+        height: int | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
             *children,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -802,37 +797,37 @@ class canvas(Container):
             self._attributes["height"] = height
 
 
-class svg(Container):
-    def __init__(
+class svg(Container):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
-        *children: typing.Union[Tag, str],
-        width: typing.Optional[typing.Union[int, str]] = None,
-        height: typing.Optional[typing.Union[int, str]] = None,
-        viewBox: typing.Optional[str] = None,
-        xmlns: typing.Optional[str] = "http://www.w3.org/2000/svg",
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        *children: Tag | str,
+        width: int | str | None = None,
+        height: int | str | None = None,
+        viewBox: str | None = None,  # noqa: N803
+        xmlns: str | None = "http://www.w3.org/2000/svg",
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
             *children,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -852,34 +847,34 @@ class svg(Container):
             self._attributes["xmlns"] = xmlns
 
 
-class map(Container):
-    def __init__(
+class map_(Container):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
-        *children: typing.Union[Tag, str],
-        name: typing.Optional[str] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        *children: Tag | str,
+        name: str | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
             *children,
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
@@ -893,43 +888,41 @@ class map(Container):
             self._attributes["name"] = name
 
 
-class area(Void):
-    def __init__(
+class area(Void):  # noqa: N801
+    def __init__(  # noqa: PLR0913
         self,
         *,
-        alt: typing.Optional[str] = None,
-        coords: typing.Optional[str] = None,
-        shape: typing.Optional[
-            typing.Literal["rect", "circle", "poly", "default"]
-        ] = None,
-        href: typing.Optional[str] = None,
-        target: typing.Optional[str] = None,
-        download: typing.Optional[typing.Union[str, bool]] = None,
-        ping: typing.Optional[typing.Union[str, list[str]]] = None,
-        rel: typing.Optional[str] = None,
-        referrerpolicy: typing.Optional[str] = None,
-        id: typing.Optional[str] = None,
-        class_: typing.Optional[typing.Union[str, list[str]]] = None,
-        style: typing.Optional[str] = None,
-        title: typing.Optional[str] = None,
-        lang: typing.Optional[str] = None,
-        dir: typing.Optional[typing.Literal["ltr", "rtl", "auto"]] = None,
-        tabindex: typing.Optional[int] = None,
-        hidden: typing.Optional[bool] = None,
-        draggable: typing.Optional[bool] = None,
-        contenteditable: typing.Optional[bool] = None,
-        spellcheck: typing.Optional[bool] = None,
-        translate: typing.Optional[bool] = None,
-        accesskey: typing.Optional[str] = None,
+        alt: str | None = None,
+        coords: str | None = None,
+        shape: typing.Literal["rect", "circle", "poly", "default"] | None = None,
+        href: str | None = None,
+        target: str | None = None,
+        download: str | bool | None = None,
+        ping: str | list[str] | None = None,
+        rel: str | None = None,
+        referrerpolicy: str | None = None,
+        id_: str | None = None,
+        class_: str | list[str] | None = None,
+        style: str | None = None,
+        title: str | None = None,
+        lang: str | None = None,
+        dir_: typing.Literal["ltr", "rtl", "auto"] | None = None,
+        tabindex: int | None = None,
+        hidden: bool | None = None,
+        draggable: bool | None = None,
+        contenteditable: bool | None = None,
+        spellcheck: bool | None = None,
+        translate: bool | None = None,
+        accesskey: str | None = None,
         **kwargs: AttributeValue,
-    ):
+    ) -> None:
         super().__init__(
-            id=id,
+            id_=id_,
             class_=class_,
             style=style,
             title=title,
             lang=lang,
-            dir=dir,
+            dir_=dir_,
             tabindex=tabindex,
             hidden=hidden,
             draggable=draggable,
