@@ -45,3 +45,8 @@ extend-select = ["I", "D205", "D415"]
 
 [tool.ruff.lint.isort]
 combine-as-imports = true
+
+[dependency-groups]
+dev = [
+    "mypy>=1.18.1",
+]
