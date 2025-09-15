@@ -10,7 +10,7 @@ if typing.TYPE_CHECKING:
 
 
 class img(Void):
-    def __init__(
+    def __init__(  # noqa: C901
         self,
         *,
         alt: typing.Optional[str] = None,
@@ -313,7 +313,7 @@ class audio(Container):
 
 
 class video(Container):
-    def __init__(
+    def __init__(  # noqa: C901
         self,
         *children: typing.Union[Tag, str],
         src: typing.Optional[str] = None,
@@ -578,7 +578,7 @@ class embed(Void):
 
 
 class iframe(Container):
-    def __init__(
+    def __init__(  # noqa: C901
         self,
         *children: typing.Union[Tag, str],
         src: typing.Optional[str] = None,

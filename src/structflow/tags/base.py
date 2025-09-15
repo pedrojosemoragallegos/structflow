@@ -8,7 +8,7 @@ from .types import AttributeValue
 
 
 class Tag(ABC):
-    def __init__(
+    def __init__(  # noqa: C901
         self,
         id: typing.Optional[str] = None,
         class_: typing.Optional[typing.Union[str, list[str]]] = None,

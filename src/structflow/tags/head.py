@@ -159,7 +159,7 @@ class meta(Void):
 
 
 class link(Void):
-    def __init__(
+    def __init__(  # noqa: C901
         self,
         rel: typing.Optional[
             typing.Union[

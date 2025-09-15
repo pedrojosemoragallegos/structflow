@@ -9,7 +9,7 @@ if typing.TYPE_CHECKING:
 
 
 class script(Container):
-    def __init__(
+    def __init__(  # noqa: C901
         self,
         *children: typing.Union[script, noscript, template, str],
         id: typing.Optional[str] = None,

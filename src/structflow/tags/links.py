@@ -88,7 +88,7 @@ class a(Container):  # TODO does it correspond here?
 
 
 class link(Void):
-    def __init__(
+    def __init__(  # noqa: C901
         self,
         rel: typing.Union[str, list[str]],
         href: typing.Optional[str] = None,

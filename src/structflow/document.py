@@ -66,6 +66,11 @@ class html(Container):
 
 
 class Document:
+    # for typing reasons
+    _head: head
+    _body: body
+    _root: html
+
     def __init__(
         self,
         *head_elements: typing.Union[
@@ -104,9 +109,6 @@ class Document:
             ]
         ] = list(head_elements)
         self._pending_body: list[typing.Union[Tag, str]] = []
-        self._head: typing.Optional[head] = None
-        self._body: typing.Optional[body] = None
-        self._root: typing.Optional[html] = None
         self._dirty = True
 
     def add(self, *tags: typing.Union[Tag, str]):
@@ -145,9 +147,9 @@ class Document:
         if not self._dirty and self._root is not None:
             return
 
-        self._head: head = head(*self._head_elements)
-        self._body: body = body(*self._pending_body)
-        self._root: html = html(
+        self._head = head(*self._head_elements)
+        self._body = body(*self._pending_body)
+        self._root = html(
             self._head, self._body, lang=self._html_lang, dir=self._html_dir
         )
         self._dirty = False
