@@ -144,7 +144,7 @@ class Document:
         )
 
     def _ensure_built(self):
-        if not self._dirty and self._root is not None:
+        if not self._dirty and self._root:
             return
 
         self._head = head(*self._head_elements)
