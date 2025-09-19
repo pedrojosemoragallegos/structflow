@@ -5,8 +5,8 @@ import typing
 from .base import Container, Void
 
 if typing.TYPE_CHECKING:
-    from .base import AttributeValue
     from .scripting import noscript, script, template
+    from .types import AttributeValue
 
 
 class head(Container):  # noqa: N801
