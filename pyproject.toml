@@ -33,7 +33,6 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/pedrojosemoragallegos/structflow"
 Repository = "https://github.com/pedrojosemoragallegos/structflow"
-Documentation = "https://structflow.readthedocs.io"
 
 [tool.mypy]
 strict = true
