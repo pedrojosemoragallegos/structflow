@@ -1,5 +1,10 @@
 # StructFlow
 
+[![PyPI version](https://img.shields.io/pypi/v/structflow)](https://pypi.org/project/structflow/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/structflow)](https://pypi.org/project/structflow/)
+[![Downloads](https://pepy.tech/badge/structflow)](https://pepy.tech/project/structflow)
+[![Wheel](https://img.shields.io/pypi/wheel/structflow)](https://pypi.org/project/structflow/)
+
 A modern, type-safe Python library for generating HTML documents programmatically. StructFlow provides a clean, Pythonic API for creating HTML with full type hints and comprehensive tag support.
 
 ## Features
