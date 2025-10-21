@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "structflow"
-version = "3.0.0"
+version = "3.0.1"
 description = "A Python library for programmatic HTML generation with type safety and a clean API"
 readme = "README.md"
 license = "MIT"
@@ -14,7 +14,7 @@ authors = [
 requires-python = ">=3.10,<3.14"
 keywords = ["html", "generation", "web", "markup", "template", "type-safe"]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
